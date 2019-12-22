@@ -1,0 +1,93 @@
+<div class="container">
+  <form [formGroup]="editForm" (ngSubmit)="editEmployee()" class="EditForm ">
+    <div class="form-inline  ">
+      <div class="col-lg-4">
+        <label class="labelStyle">اسم العميل</label>
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              editForm.get('name').errors && editForm.get('name').touched
+          }"
+          formControlName="name"
+          placeholder="اسم العميل"
+        />
+        <div class="invalid-feedback">الاسم مطلوب</div>
+      </div>
+      <div class=" col-lg-4">
+        <label class="labelStyle">الايميل</label>
+        <input type="email" class="form-control" formControlName="email" />
+      </div>
+      <div class=" col-lg-4">
+        <label class="labelStyle"> الهاتف</label>
+        <input
+          type="tel"
+          class="form-control "
+          formControlName="mobile"
+        />
+      </div>
+    </div>
+    <div class="form-inline  ">
+      <div class="col-lg-4">
+        <label class="labelStyle"> الوصف</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+        />
+      </div>
+      <div class=" col-lg-4">
+        <label class="labelStyle">ادخال بواسطة</label>
+        <input type="email" class="form-control" formControlName="enterdBy" />
+      </div>
+      <div class=" col-lg-4">
+        <label class="labelStyle"> الوظيفة</label>
+        <input
+          type="tel"
+          class="form-control "
+          formControlName="job"
+        />
+      </div>
+    </div>
+    <div class="form-inline ">
+      <div class="col-lg-4">
+        <label class="labelStyle">هاتف 2 </label>
+        <input
+          type="text"
+          class="form-control "
+          formControlName="mobile2"
+        />
+      </div>
+      <div class=" col-lg-4">
+        <label class="labelStyle">الكود</label>
+        <input type="email" class="form-control" formControlName="code" />
+      </div>
+      <div class=" col-lg-4">
+        <label class="labelStyle"> واتساب</label>
+        <input
+          type="tel"
+          class="form-control "
+          formControlName="whatsapp"
+        />
+      </div>
+    </div>
+
+    <div >
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!editForm.valid"
+      >
+        حفظ
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        [routerLink]="['/ememployes']"
+      >
+        الغاء
+      </button>
+    </div>
+  </form>
+</div>

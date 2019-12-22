@@ -1,0 +1,95 @@
+<div id="tablerecords" class="container col-lg-11 col-sm-6 RightToLift">
+  <div class="RightToLift">
+    <button (click)="ExportTOExcel()" class="btn btn-success ">
+      <i class="fa fa-download"></i>
+    </button>
+    <button (click)="printData()" class="btn btn-success">
+      <i class="fa fa-print"></i>
+    </button>
+    <button (click)="reload()" class="btn btn-success">
+      <i class="fa fa-refresh"></i>
+    </button>
+    <button (click)="enableSearch()" class="btn btn-success">
+      <i class="fa fa-search"></i>
+    </button>
+    <button class="btn btn-success" (click)="enableConfig()">
+      <i class="fa fa-cog"></i>
+    </button>
+  </div>
+  <button [routerLink]="['/newEmp']" class="btn btn-primary lefAligh">
+    New
+  </button>
+  <table class="tablemm" #TABLE #table>
+    <thead class="header ">
+      <tr>
+        <th>Id</th>
+        <th scope="col">
+          <input
+            *ngIf="searshFlag"
+            type="text"
+            [(ngModel)]="name"
+            (ngModelChange)="search()"
+            class="form-control"
+            id="search"
+          />
+          اسم العميل
+        </th>
+        <th scope="col">توصيف</th>
+        <th scope="col">الوظيفة</th>
+        <th scope="col">ادخال بواسطة</th>
+        <th scope="col">تاريخ الادخال</th>
+        <th scope="col" class="text-center">
+          <input
+            *ngIf="searshFlag"
+            type="text"
+            [(ngModel)]="phone"
+            (ngModelChange)="search()"
+            class="form-control text-center"
+            id="search"
+          />الهاتف
+        </th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let emp of empls">
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.description }}</td>
+        <td>{{ emp.job }}</td>
+        <td>{{ emp.enterdBy }}</td>
+        <td>{{ emp.entryDate | date }}</td>
+        <td>{{ emp.mobile }}</td>
+        <td>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <button class="btn btn-success" [routerLink]="['/edit/', emp.id]">
+                <i class="fas fa-edit"></i>
+              </button>
+            </li>
+            <li class="list-inline-item">
+              <button class="btn btn-danger" (click)="deleteUser(emp.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <pagination
+      [boundaryLinks]="true"
+      [totalItems]="pagination?.totalItems"
+      (pageChanged)="pageChanged($event)"
+      [(ngModel)]="pagination.currentPage"
+      [itemsPerPage]="pagination?.itemsPerPage || 10"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+    >
+    </pagination>
+  </div>
+</div>

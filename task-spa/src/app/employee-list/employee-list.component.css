@@ -1,0 +1,31 @@
+.header {
+  color: white;
+  background-color: lightskyblue;
+}
+.table {
+  margin: 20px;
+  direction: rtl;
+  font-size: small;
+}
+@media print {
+  .doNotPrint {
+    display: table-row !important;
+  }
+}
+/* .tablemm tr {  
+  width: fit-content;
+} */
+.tablemm {
+  border: 1px  blue;
+  width: 100%;
+  height: 80%;
+}
+.RightToLift {
+  direction: rtl;
+  float: right;
+  margin-right: 20px;
+}
+
+.lefAligh {
+  float: left;
+}

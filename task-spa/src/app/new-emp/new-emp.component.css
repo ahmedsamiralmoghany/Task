@@ -1,0 +1,22 @@
+.EditForm {
+    direction: rtl;
+    text-align: justify;
+  }
+  .btn {
+    margin: 5px 10px;
+  }
+  .dispaly {
+    display: inline;
+  }
+  
+  .labelStyle {
+    display: block;
+    color: lightskyblue;
+    text-align: right;
+  }
+  .container-fluid{
+    height:100%;
+    display:table;
+    width: 100%;
+    padding: 0;
+  }
